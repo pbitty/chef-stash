@@ -9,14 +9,10 @@ template "#{node['stash']['install_path']}/stash/bin/setenv.sh" do
 end
 
 template "#{node['stash']['install_path']}/stash/conf/server.xml" do
-  if stash_version.major == 1
-    source 'server.xml.erb'
-  else
-    source 'server-tomcat7.xml.erb'
-  end
+  source 'server.xml.erb'
   owner  node['stash']['user']
   mode   '0640'
-  variables :tomcat => settings['tomcat']
+  variables :tomcat => settings['tomcat'], :is_tomcat7 => (stash_version.major > 1)
   notifies :restart, 'service[stash]', :delayed
 end
 
