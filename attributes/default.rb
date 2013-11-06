@@ -106,3 +106,4 @@ default['stash']['tomcat']['keystoreFile'] = "#{node['stash']['home_path']}/.key
 default['stash']['tomcat']['keystorePass'] = 'changeit'
 default['stash']['tomcat']['port']         = '7990'
 default['stash']['tomcat']['ssl_port']     = '8443'
+default['stash']['tomcat']['context_path']     = ''
